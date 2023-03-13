@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+		integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="/static/style.css">
+
+	<title>Spark</title>
+</head>
+
+<body>
+	<form method=post enctype=multipart/form-data>
+		<div style="height:80px"></div>
+		<div class="container_title">
+			<h3 style="color:#030d9b"><i>義大胸腔科</i></h3>
+			<hr>
+			<div style="height:50px"></div>
+			<h5>Choose the image of your choice </h5>
+			<!-- <input type="file" name="file" class="form-control-file" id="inputfile" multiple> -->
+			
+			<div id="container">
+				<div id="upload_zone" class="upload_zone">
+					請將要上傳的圖片拖曳至此
+				</div>
+				<input type="file" id="fileUploader" class="display_none" name="file" onchange="handleFiles(this.files)" multiple />
+				<div id="preview"></div>
+			</div>
+
+
+			<div style="height:40px"></div>
+			<h5>Select YOLOv5 model </h5>
+			<select name="model_choice">
+				{%for i in range(0, len)%}
+				<option>{{listOfKeys[i]}}</option>
+				{%endfor%}
+			</select>
+			<div style="height:50px"></div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+
+			<h1>練習 : 製作上傳圖片的區塊</h1>
+			<div id="container">
+				<div id="upload_zone" class="upload_zone">
+					請將要上傳的圖片拖曳至此
+				</div>
+				<input type="file" id="fileUploader" class="display_none" onchange="handleFiles(this.files)" multiple />
+			</div>
+
+			<div id="preview"></div>
+			<script src="static/upload.js"></script>
+		</div>
+	</form>
+</body>
+
+</html>
+
+<script type="text/javascript">
+	$('#fileUploader').bind('change', function () {
+		let fileSize = this.files[0].size / 3408 / 3048; // this gives in MB
+		if (fileSize > 10) {
+			$("#fileUploader").val(null);
+			alert('file is too big. images more than 1MB are not allowed')
+			return
+		}
+
+		let ext = $('#fileUploader').val().split('.').pop().toLowerCase();
+		console.log(ext);
+		if ($.inArray(ext, ['jpg', 'jpeg']) == -1) {
+			$("#fileUploader").val(null);
+			alert('only jpeg/jpg files are allowed!');
+		}
+	});
+</script>
+
+<style>
+	.bd-placeholder-img {
+		font-size: 1.125rem;
+		text-anchor: start;
+	}
+
+	@media (min-width: 768px) {
+		.bd-placeholder-img-lg {
+			font-size: 150%;
+		}
+	}
+</style>
