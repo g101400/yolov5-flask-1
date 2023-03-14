@@ -16,17 +16,18 @@
 	<form method=post enctype=multipart/form-data>
 		<div style="height:80px"></div>
 		<div class="container_title">
-			<h3 style="color:#030d9b"><i>義大胸腔科</i></h3>
+			<h3 style="color:#030d9b"><i>Company Name</i></h3>
 			<hr>
 			<div style="height:50px"></div>
 			<h5>Choose the image of your choice </h5>
 			<!-- <input type="file" name="file" class="form-control-file" id="inputfile" multiple> -->
-			
+
 			<div id="container">
 				<div id="upload_zone" class="upload_zone">
 					請將要上傳的圖片拖曳至此
 				</div>
-				<input type="file" id="fileUploader" class="display_none" name="file" onchange="handleFiles(this.files)" multiple />
+				<input type="file" id="fileUploader" class="display_none" name="file" onchange="handleFiles(this.files)"
+					multiple />
 				<div id="preview"></div>
 			</div>
 
@@ -40,14 +41,6 @@
 			</select>
 			<div style="height:50px"></div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-
-			<h1>練習 : 製作上傳圖片的區塊</h1>
-			<div id="container">
-				<div id="upload_zone" class="upload_zone">
-					請將要上傳的圖片拖曳至此
-				</div>
-				<input type="file" id="fileUploader" class="display_none" onchange="handleFiles(this.files)" multiple />
-			</div>
 
 			<div id="preview"></div>
 			<script src="static/upload.js"></script>
